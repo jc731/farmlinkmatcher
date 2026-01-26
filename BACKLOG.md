@@ -55,30 +55,31 @@ This backlog tracks all development work for the Illinois Farmlink App MVP. Item
 ---
 
 ### Milestone 2: Database Schema & RLS Setup
-**Target**: Next
+**Target**: In Progress
 **Dependencies**: Milestone 1
 
 **Features**:
-- [ ] Design database schema with all required tables
-- [ ] Create Supabase migration files
-- [ ] Define enums (role, status, listing_status, inquiry_status, etc.)
-- [ ] Implement Row Level Security (RLS) policies
-- [ ] Create database indexes for performance
-- [ ] Set up Supabase Storage buckets for listing media
+- [x] Design database schema with all required tables
+- [x] Create Supabase migration files
+- [x] Define enums (role, status, listing_status, inquiry_status, etc.)
+- [x] Implement Row Level Security (RLS) policies
+- [x] Create database indexes for performance
+- [x] Set up Supabase Storage buckets for listing media
+- [x] Create schema documentation
 
 **Acceptance Criteria**:
-- All tables from data model are created
-- RLS policies enforce:
+- [x] All tables from data model are created
+- [x] RLS policies enforce:
   - Pending users can only edit own profile
   - Approved users can see contact details
   - Listings require approval for visibility
   - Demographic data is admin-only
-- Migration files are versioned and documented
-- RLS policies are tested and validated
+- [x] Migration files are versioned and documented
+- [ ] RLS policies are tested and validated (requires Supabase project)
 
 **Dependencies**:
-- Requires Supabase project setup
-- Requires org-controller guidance on RLS patterns
+- Requires Supabase project setup (user needs to provide credentials)
+- Requires org-controller guidance on RLS patterns ✅
 
 ---
 
