@@ -1,0 +1,9 @@
+{
+  "strictness": "high",
+  "ask_before": [
+    "breaking_change",
+    "security_sensitive",
+    "schema_migration",
+    "unknown_requirements"
+  ]
+}
