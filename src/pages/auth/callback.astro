@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AuthCallback from '../../components/AuthCallback';
+// Handles redirect from Supabase (e.g. password reset) when tokens are in URL hash.
+// For OAuth/code flow we could add server-side exchange here.
+---
+<BaseLayout title="Signing in – Illinois Farmlink">
+  <div class="max-w-md">
+    <AuthCallback client:load />
+    <p class="mt-4 text-sm text-gray-500">
+      <a href="/auth/sign-in" class="text-green-600 hover:underline">Back to sign in</a>
+    </p>
+  </div>
+</BaseLayout>
