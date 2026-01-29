@@ -1,13 +1,32 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
 // Protected by middleware: unauthenticated users are redirected to /auth/sign-in
 const user = Astro.locals.user;
 ---
+
 <BaseLayout title="Dashboard – Illinois Farmlink">
   <h1 class="text-2xl font-bold">Dashboard</h1>
-  <p class="mt-2 text-gray-600">Welcome{user?.email ? `, ${user.email}` : ''}. Your profile is pending review. You'll get full access after approval.</p>
+  <p class="mt-2 text-gray-600">
+    Welcome{user?.email ? `, ${user.email}` : ""}. Your profile is pending
+    review. You'll get full access after approval.
+  </p>
   <p class="mt-4">
-    <a href="/app/profile" class="text-green-600 hover:underline">View profile</a> ·
-    <a href="/app/onboarding" class="text-green-600 hover:underline">Complete onboarding</a>
+    <a href="/app/profile" class="text-green-600 hover:underline"
+      >View profile</a
+    > ·
+    <a href="/app/onboarding" class="text-green-600 hover:underline"
+      >Complete onboarding</a
+    >
+    {
+      import.meta.env.DEV && (
+        <span>
+          {" "}
+          ·{" "}
+          <a href="/app/dev/user" class="text-amber-600 hover:underline">
+            Dev: swap user
+          </a>
+        </span>
+      )
+    }
   </p>
 </BaseLayout>

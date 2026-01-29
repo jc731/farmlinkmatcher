@@ -108,6 +108,10 @@ This project uses MCP (Model Context Protocol) servers for development and gover
    pnpm build
    ```
 
+### Dev utilities
+
+- **User swap** — When running locally with seed test users (`pnpm db:reset`), go to `/app/dev/user` (while signed in) to see the current user and role, and to **Login as** farmer, farmland owner, or admin. This uses seed accounts (e.g. `farmer@farmlink-dev.local`). Optional env: `DEV_TEST_PASSWORD` (default in seed: `DevPassword123!`). The API route `/api/dev/login-as` is only enabled in dev (`import.meta.env.DEV`).
+
 ## Approval Workflow Overview
 
 The application uses a multi-stage approval process:

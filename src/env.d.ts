@@ -4,6 +4,8 @@
 interface ImportMetaEnv {
   readonly PUBLIC_SUPABASE_URL: string;
   readonly PUBLIC_SUPABASE_ANON_KEY: string;
+  /** Dev-only: password for seed test users (admin@, farmer@, landowner@farmlink-dev.local). Default in seed: DevPassword123! */
+  readonly DEV_TEST_PASSWORD?: string;
 }
 
 interface ImportMeta {

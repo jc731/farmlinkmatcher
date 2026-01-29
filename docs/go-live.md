@@ -31,6 +31,7 @@ Use the project’s **DB tests** (see below) to automate RLS checks where possib
 - [ ] Production Supabase project created (or existing project designated).
 - [ ] Production env vars set (e.g. `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`; optional `SUPABASE_SERVICE_ROLE_KEY` for server-only use). No dev or test keys in production.
 - [ ] Auth redirect URLs and site URL updated in Supabase Dashboard for production domain.
+- [ ] Dev-only routes (`/app/dev/user`, `/api/dev/login-as`) are disabled in production (they check `import.meta.env.DEV` and return 404 when not in dev).
 
 ### 4. Seed policy
 

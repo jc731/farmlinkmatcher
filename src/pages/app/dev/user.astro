@@ -1,0 +1,75 @@
+---
+/**
+ * Dev-only: swap between seed test users for testing (farmer, landowner, admin).
+ * Protected by middleware; only useful when running with seed test users.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { createSupabaseServerInstance } from '../../../lib/supabase-server';
+
+const user = Astro.locals.user;
+let profileRole: string | null = null;
+
+if (user) {
+  const supabase = createSupabaseServerInstance({
+    headers: Astro.request.headers,
+    cookies: Astro.cookies,
+  });
+  const { data } = await supabase.from('profiles').select('role').eq('id', user.id).single();
+  profileRole = data?.role ?? null;
+}
+
+const testUsers = [
+  { role: 'farmer', label: 'Farmer (seeking land)', email: 'farmer@farmlink-dev.local' },
+  { role: 'landowner', label: 'Farmland owner', email: 'landowner@farmlink-dev.local' },
+  { role: 'admin', label: 'Admin', email: 'admin@farmlink-dev.local' },
+];
+---
+<BaseLayout title="Dev: User swap – Illinois Farmlink">
+  <div class="max-w-2xl space-y-8">
+    <div class="rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-900">
+      <p class="font-medium">Dev utility</p>
+      <p class="mt-1 text-sm">Use this page to switch between seed test users. Only available in development.</p>
+    </div>
+
+    <section>
+      <h2 class="text-lg font-semibold text-gray-900">Current user</h2>
+      {user ? (
+        <dl class="mt-2 grid gap-2 text-sm">
+          <div><dt class="font-medium text-gray-500">ID</dt><dd class="font-mono text-gray-900">{user.id}</dd></div>
+          <div><dt class="font-medium text-gray-500">Email</dt><dd class="text-gray-900">{user.email ?? '—'}</dd></div>
+          <div><dt class="font-medium text-gray-500">Role</dt><dd class="text-gray-900">{profileRole ?? '—'}</dd></div>
+        </dl>
+      ) : (
+        <p class="mt-2 text-gray-600">Not signed in.</p>
+      )}
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-gray-900">Login as (test users)</h2>
+      <p class="mt-1 text-sm text-gray-600">Sign out and sign in as this user. Requires seed test accounts (e.g. <code class="rounded bg-gray-100 px-1">pnpm db:reset</code> locally).</p>
+      <ul class="mt-4 space-y-3">
+        {testUsers.map(({ role, label, email }) => (
+          <li class="flex items-center justify-between gap-4 rounded-md border border-gray-200 bg-white p-3">
+            <div>
+              <p class="font-medium text-gray-900">{label}</p>
+              <p class="text-sm text-gray-500">{email}</p>
+            </div>
+            <form method="post" action="/api/dev/login-as" class="flex-shrink-0">
+              <input type="hidden" name="role" value={role} />
+              <button
+                type="submit"
+                class="rounded-md bg-green-600 px-3 py-2 text-sm font-medium text-white hover:bg-green-700"
+              >
+                Login as {role}
+              </button>
+            </form>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <p class="text-sm text-gray-500">
+      <a href="/app" class="text-green-600 hover:underline">Back to dashboard</a>
+    </p>
+  </div>
+</BaseLayout>

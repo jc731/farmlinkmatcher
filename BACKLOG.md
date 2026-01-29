@@ -4,12 +4,19 @@
 
 This backlog tracks all development work for the Illinois Farmlink App MVP. Items are organized by epic and milestone, with clear dependencies and sequencing.
 
+## Testing & verification (latest)
+
+- **Tests**: `pnpm test` — 6/6 passing (DB schema + RLS smoke tests).
+- **Build**: `pnpm run build` — Astro production build succeeds.
+- **Dev user swap**: `/app/dev/user` — swap between seed test users (farmer, landowner, admin) for testing; see README “Dev utilities”.
+- **Next milestone**: Milestone 4 (Onboarding Flow).
+
 ## Epics
 
 ### Epic 1: Foundation & Infrastructure
 **Goal**: Establish project foundation, database schema, authentication, and core infrastructure.
 
-**Status**: In Progress
+**Status**: Complete (Milestones 1–3 done)
 
 ### Epic 2: User Profiles & Onboarding
 **Goal**: Enable users to create profiles, complete onboarding, and manage their information.
@@ -402,6 +409,7 @@ This backlog tracks all development work for the Illinois Farmlink App MVP. Item
 
 ## Notes
 
+- **Terminal errors** referencing `MobileMenu.astro`, `RichText.astro`, `Slider.astro`, etc., and paths under `gailrogers` or Astro 5 dev-toolbar are from a different project or workspace; this repo (farmlinkmatcher) has only the auth components (SignUpForm, SignInForm, ResetPasswordForm, AuthCallback) and no `sections/` or `forms/ContactForm` — run dev from this repo root and ensure no symlinks/workspaces point elsewhere.
 - All features must follow org-controller MCP guidance
 - RLS policies must be validated for every feature
 - Documentation must be updated as features are completed
