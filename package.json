@@ -1,0 +1,19 @@
+{
+  "name": "farmlinkmatcher",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm",
+  "pnpm": {
+    "onlyBuiltDependencies": ["supabase"]
+  },
+  "scripts": {
+    "db:link": "node scripts/db-link.js",
+    "db:push": "supabase db push",
+    "db:reset": "supabase db reset",
+    "supabase": "supabase"
+  },
+  "devDependencies": {
+    "supabase": "^2.0.0"
+  }
+}

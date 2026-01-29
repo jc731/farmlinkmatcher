@@ -24,20 +24,29 @@ This directory contains database migrations for the Illinois Farmlink App.
 
 ### Using Supabase CLI (Recommended)
 
-1. **Install Supabase CLI**
+This project uses **pnpm** and the Supabase CLI as a dev dependency.
+
+1. **Install dependencies**
    ```bash
-   npm install -g supabase
+   pnpm install
    ```
 
-2. **Link to your project**
+2. **Log in to Supabase** (once)
    ```bash
-   supabase link --project-ref your-project-ref
+   pnpm supabase login
    ```
 
-3. **Run migrations**
+3. **Link to your project** (uses `project_id` from `.env`)
    ```bash
-   supabase db push
+   pnpm db:link
    ```
+
+4. **Run migrations**
+   ```bash
+   pnpm db:push
+   ```
+
+Or run the CLI directly: `pnpm supabase <command>` (e.g. `pnpm supabase db push`).
 
 ### Using Supabase Dashboard
 

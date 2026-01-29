@@ -35,7 +35,8 @@ The application follows a server-side rendered architecture with client-side int
 - **Server Functions**: Astro SSR routes and Supabase Edge Functions
 
 ### Development Tools
-- **Package Manager**: pnpm (recommended)
+- **Package Manager**: pnpm (required)
+- **Supabase CLI**: Installed via pnpm (`pnpm add -D supabase`). Use `pnpm supabase`, `pnpm db:link`, `pnpm db:push`.
 - **Type Checking**: TypeScript
 - **Linting**: ESLint (configured per project standards)
 
@@ -61,17 +62,17 @@ The application follows a server-side rendered architecture with client-side int
 
 3. **Set up Supabase**
    - Create a new Supabase project at https://supabase.com
-   - Copy your project URL and anon key
-   - Run database migrations (to be created in schema setup phase)
+   - Add a `.env` file with at least: `project_id`, `project_url`, `anon_public_key` (see `.env.example` for optional `PUBLIC_*` names the app uses)
+   - Log in to the Supabase CLI once: `pnpm supabase login`
+   - Link this repo to your project: `pnpm db:link` (uses `project_id` from `.env`)
+   - Apply migrations: `pnpm db:push`
 
 4. **Configure environment variables**
-   Copy `.env.example` to `.env` and fill in your Supabase project URL and keys:
-   ```env
-   PUBLIC_SUPABASE_URL=your_supabase_project_url
-   PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-   ```
-   The app reads from `.env` and expects these variable names. Do not commit `.env` (it is in `.gitignore`).
+   Copy `.env.example` to `.env` and set your Supabase values. The app expects:
+   - `PUBLIC_SUPABASE_URL` — use your project URL (e.g. same as `project_url` in `.env`)
+   - `PUBLIC_SUPABASE_ANON_KEY` — use your anon key (e.g. same as `anon_public_key`)
+   - `SUPABASE_SERVICE_ROLE_KEY` — optional, for server-side admin operations
+   Do not commit `.env` (it is in `.gitignore`).
 
 5. **Start development server**
    ```bash
