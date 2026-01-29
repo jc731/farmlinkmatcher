@@ -1,0 +1,31 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'Illinois Farmlink' } = Astro.props;
+import '../styles/global.css';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-gray-50 text-gray-900">
+    <header class="border-b border-gray-200 bg-white">
+      <div class="mx-auto max-w-5xl px-4 py-3 flex justify-between items-center">
+        <a href="/" class="font-semibold text-lg">Illinois Farmlink</a>
+        <nav class="flex gap-4">
+          <a href="/about" class="text-gray-600 hover:text-gray-900">About</a>
+          <a href="/auth/sign-in" class="text-gray-600 hover:text-gray-900">Sign in</a>
+          <a href="/auth/sign-up" class="rounded-md bg-green-600 px-3 py-2 text-sm font-medium text-white hover:bg-green-700">Sign up</a>
+        </nav>
+      </div>
+    </header>
+    <main class="mx-auto max-w-5xl px-4 py-8">
+      <slot />
+    </main>
+  </body>
+</html>
