@@ -20,6 +20,14 @@ This directory contains database migrations for the Illinois Farmlink App.
    - Creates storage bucket for listing media
    - Creates storage policies for file access
 
+4. **20260129044246_fix_function_search_path.sql**
+   - Sets `search_path = public` on RLS helper and trigger functions (Security Advisor 0011)
+
+## Seeding (dev only)
+
+- **`seed.sql`** runs on `pnpm db:reset` (local). It creates test auth users and sample profiles/listings for dev.
+- **Production**: Do not run seed. See `docs/go-live.md`.
+
 ## Running Migrations
 
 ### Using Supabase CLI (Recommended)

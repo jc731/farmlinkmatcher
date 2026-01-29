@@ -67,6 +67,10 @@ This backlog tracks all development work for the Illinois Farmlink App MVP. Item
 - [x] Set up Supabase Storage buckets for listing media
 - [x] Create schema documentation
 - [x] Supabase CLI installed (pnpm); project linked; migrations pushed
+- [x] Security: fix function search_path (migration 20260129044246)
+- [x] Dev seeding: `supabase/seed.sql` (local / db reset)
+- [x] DB tests: vitest + schema + RLS smoke tests (`pnpm test`)
+- [x] Go-live strategy: `docs/go-live.md`
 
 **Acceptance Criteria**:
 - [x] All tables from data model are created
@@ -77,6 +81,7 @@ This backlog tracks all development work for the Illinois Farmlink App MVP. Item
   - Demographic data is admin-only
 - [x] Migration files are versioned and documented
 - [x] RLS policies applied via `pnpm db:push` (migrations run successfully)
+- [x] DB tests exist and pass; go-live and seed policy documented
 
 **Dependencies**:
 - Requires Supabase project setup (user provides .env) ✅

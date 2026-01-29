@@ -40,6 +40,12 @@ The application follows a server-side rendered architecture with client-side int
 - **Type Checking**: TypeScript
 - **Linting**: ESLint (configured per project standards)
 
+### MCP Integrations
+This project uses MCP (Model Context Protocol) servers for development and governance:
+- **Supabase MCP** — Configured in `.cursor/mcp.json` (project-scoped, read-only). Provides docs search, database tools (`list_tables`, `execute_sql`, `apply_migration`, `generate_typescript_types`), debugging, and more. Cursor will prompt for Supabase login on first use.
+- **Org-controller (org-control MCP)** — Architecture, security, QA, documentation, and workflow guidance; org-level standards and approval workflows
+- **Astro Docs** — Official Astro framework documentation
+
 ## Environment Setup
 
 ### Prerequisites
@@ -74,12 +80,17 @@ The application follows a server-side rendered architecture with client-side int
    - `SUPABASE_SERVICE_ROLE_KEY` — optional, for server-side admin operations
    Do not commit `.env` (it is in `.gitignore`).
 
-5. **Start development server**
+5. **Run DB tests** (optional; requires `.env`)
+   ```bash
+   pnpm test
+   ```
+
+6. **Start development server**
    ```bash
    pnpm dev
    ```
 
-6. **Build for production**
+7. **Build for production**
    ```bash
    pnpm build
    ```
@@ -209,6 +220,12 @@ See database schema documentation (to be created) for full table structures and 
 - **Contact Information**: Only visible to approved users
 - **Pending Users**: Cannot see contact details or create inquiries
 - **Admin Actions**: All admin actions are logged and auditable
+
+## DB tests, seeding, and go-live
+
+- **Tests**: `pnpm test` runs Vitest DB tests (schema smoke + RLS anon vs service role). Requires `.env` with Supabase URL and anon key.
+- **Seeding**: Local dev only. `pnpm db:reset` (local Supabase) runs `supabase/seed.sql`. Do not run seed in production.
+- **Go-live**: See **`docs/go-live.md`** for migrations, RLS verification, seed policy, and rollout steps.
 
 ## Development Guidelines
 

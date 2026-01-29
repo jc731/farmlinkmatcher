@@ -11,9 +11,14 @@
     "db:link": "node scripts/db-link.js",
     "db:push": "supabase db push",
     "db:reset": "supabase db reset",
-    "supabase": "supabase"
+    "supabase": "supabase",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
-    "supabase": "^2.0.0"
+    "@supabase/supabase-js": "^2.47.0",
+    "dotenv": "^16.4.5",
+    "supabase": "^2.0.0",
+    "vitest": "^2.1.0"
   }
 }
