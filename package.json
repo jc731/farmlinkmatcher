@@ -6,6 +6,8 @@
   "packageManager": "pnpm",
   "pnpm": {
     "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
       "supabase"
     ]
   },
