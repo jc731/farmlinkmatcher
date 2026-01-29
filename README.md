@@ -4,6 +4,19 @@
 
 The Illinois Farmlink App is a web application that connects farmers with landowners through profiles, listings, and an approval-based matching workflow. The platform facilitates farmland access by enabling farmers to discover available properties and landowners to find suitable farming partners, with all interactions moderated through an admin approval system.
 
+## Branding & Terminology
+
+We use consistent terms across the app and docs:
+
+- **Farmers** — People looking for **farmland or farming opportunities**. They may be seeking land to farm, training, or partnership with a landholder. In the app and database we refer to this role as **farmer**.
+- **Farmland owners** — People or entities that offer land or opportunities that farmers can **pair** with. This includes:
+  - **Landowners** (individuals who own or manage farmland)
+  - **Co-ops** and other collective landholders
+  - **Trainers** or mentors offering land-based learning
+  - Any entity a farmer might be interested in pairing with for land access or opportunity
+
+In the app and database we use the role **landowner** for this side of the match (landowners, co-ops, trainers, etc.). UI copy may say “farmland owner,” “landholder,” or “host” where it improves clarity.
+
 ## High-Level Architecture
 
 The application follows a server-side rendered architecture with client-side interactivity where needed:

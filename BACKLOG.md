@@ -89,26 +89,26 @@ This backlog tracks all development work for the Illinois Farmlink App MVP. Item
 
 ---
 
-### Milestone 3: Authentication & Profile Bootstrap
+### Milestone 3: Authentication & Profile Bootstrap ✅
 **Target**: After Milestone 2
 **Dependencies**: Milestone 2
 
 **Features**:
-- [ ] Set up Supabase Auth integration
-- [ ] Create sign-up page (`/auth/sign-up`)
-- [ ] Create sign-in page (`/auth/sign-in`)
-- [ ] Create password reset page (`/auth/reset-password`)
-- [ ] Implement profile creation on first sign-up
-- [ ] Set up auth state management (Astro + Supabase client)
-- [ ] Create protected route middleware
+- [x] Set up Supabase Auth integration
+- [x] Create sign-up page (`/auth/sign-up`)
+- [x] Create sign-in page (`/auth/sign-in`)
+- [x] Create password reset page (`/auth/reset-password`)
+- [x] Implement profile creation on first sign-up
+- [x] Set up auth state management (Astro + Supabase client, cookie-based via @supabase/ssr)
+- [x] Create protected route middleware
 
 **Acceptance Criteria**:
 - Users can sign up with email/password
 - Users can sign in
-- Users can reset passwords
+- Users can reset passwords (request link; callback at `/auth/callback` handles recovery redirect)
 - Profile record is created on sign-up with `status: 'pending'`
 - Protected routes redirect unauthenticated users
-- Auth state persists across page loads
+- Auth state persists across page loads (cookies; middleware sets `Astro.locals.user`)
 
 **Dependencies**:
 - Requires database schema (Milestone 2)
