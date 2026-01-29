@@ -65,12 +65,13 @@ The application follows a server-side rendered architecture with client-side int
    - Run database migrations (to be created in schema setup phase)
 
 4. **Configure environment variables**
-   Create a `.env` file in the project root:
+   Copy `.env.example` to `.env` and fill in your Supabase project URL and keys:
    ```env
    PUBLIC_SUPABASE_URL=your_supabase_project_url
    PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
    SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
    ```
+   The app reads from `.env` and expects these variable names. Do not commit `.env` (it is in `.gitignore`).
 
 5. **Start development server**
    ```bash
